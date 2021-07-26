@@ -1,12 +1,13 @@
-package Assignment_1;
+package assignment_1;
 import java.util.Scanner;
-
-public class index{
-    private int balance=1000;
+public class Main{
+    Balance b=new Balance();
+    Withdraw w=new Withdraw();
+    Deposit d=new Deposit();
     boolean exit;
     public static void main(String[] args) {
-        index i=new index();
-        i.runmenu();
+        Main m=new Main();
+        m.runmenu();
     }
     public void runmenu(){
         printmenu();
@@ -19,13 +20,15 @@ public class index{
     private void action(int choice){
         switch(choice){
             case 1:
-                withdraw();
+                // System.out.println("withdraw");
+                w.withdraw();
             break;
             case 2:
-                deposit();
+                d.deposit();
+                // System.out.println("deposit");
             break;
             case 3:
-                balance();
+               b.balance();
             break;
             case 4:
             System.out.println("Thankyou for using Services !");
@@ -35,32 +38,6 @@ public class index{
             System.out.println("Wrong input in number");
         }
     }
-    private void balance(){
-        System.out.println("your Balance is :"+balance);
-    }
-    private void deposit(){
-        Scanner sc=new Scanner(System.in);
-        int userdata;
-        System.out.println("enter Amount to Deposit:");
-        userdata=Integer.parseInt(sc.next());
-        balance=balance+userdata;
-        System.out.println("your Money is Deposited!");
-    }
-    private void withdraw(){
-        Scanner sc=new Scanner(System.in);
-        int userdata;
-        System.out.println("enter Amount to withdraw:");
-        userdata=Integer.parseInt(sc.next());
-        if(userdata>=balance)
-        {
-            System.out.println("Your Balance is Low");
-        }
-        else
-        {
-            balance=balance-userdata;
-            System.out.println("withdrawal Successfull!");
-        }
-    }
     private int getinput(){
         int choice=0;
         Scanner s=new Scanner(System.in);
@@ -68,8 +45,7 @@ public class index{
             System.out.println("Enter your Choice :");
             choice=Integer.parseInt(s.next());
         } catch (NumberFormatException e) {
-            //TODO: handle exception
-            System.out.println("you have choose wrong input or use Alphabet");
+            System.out.println("wrong input ! in do not enter any Alphabet or synbol");
         }
         return choice;
     }
